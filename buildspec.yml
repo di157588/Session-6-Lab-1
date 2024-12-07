@@ -1,0 +1,22 @@
+version: 0.2
+
+phases: 
+    install:
+        commands:
+            - echo "Installing dependencies..."
+    build:
+        commands:
+            - echo "Building application..."
+    post_build:
+        commands:
+            - echo "Entered the post_build phase..."
+            - echo "Build completed on `date`"
+            - echo "Checking for a file..."
+            - |
+                if [ -f "dependency.txt" ]; then
+                    echo "File exists, build succeeds."
+                else
+                    echo "File does not exist, build fails." 
+                    exit 1
+                fi
+            
