@@ -7,11 +7,7 @@ phases:
     build:
         commands:
             - echo "Building application..."
-    post_build:
-        commands:
-            - echo "Entered the post_build phase..."
-            - echo "Build completed on `date`"
-            - echo "Checking for a file..."
+            - echo "Checking for the dependency.txt file..."
             - |
                 if [ -f "dependency.txt" ]; then
                     echo "File exists, build succeeds."
@@ -19,4 +15,9 @@ phases:
                     echo "File does not exist, build fails." 
                     exit 1
                 fi
+    post_build:
+        commands:
+            - echo "Entered the post_build phase..."
+            - echo "Build completed on `date`"
+            
             
